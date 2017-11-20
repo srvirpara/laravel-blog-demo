@@ -27,7 +27,7 @@
               <h2 class="card-title"><a href="/blog/{{ $post->slug }}">{{ $post->title }}</a></h2>
               <p class="card-text">
                 <p>
-                   {{ str_limit($post->content) }}
+                {!! str_limit(htmlspecialchars_decode(nl2br(e($post->content)))) !!}
                 </p>
               </p>
               <a href="/blog/{{ $post->slug }}" class="btn btn-primary">Read More &rarr;</a>
