@@ -7,9 +7,23 @@ use App\Post;
 use App\BlogMapTag;
 use App\BlogTag;
 use Carbon\Carbon;
+use App\Repositories\Backend\Blogs\BlogsRepository;
 
 class BlogController extends Controller
 {
+
+    /**
+     * @var BlogsRepository
+     */
+    protected $blogs;
+
+    /**
+     * @param BlogsRepository $blogs
+     */
+    public function __construct(BlogsRepository $blogs)
+    {
+        $this->blogs = $blogs;
+    }
 
     /**
      * index
@@ -20,10 +34,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('published_at', '<=', Carbon::now())
-                ->orderBy('published_at', 'desc')
-                ->paginate(config('blog.posts_per_page'));
-
+        $posts = $this->blogs->getAllBlogs();
+       
         return view('blog.index', compact('posts'));
     }
 
@@ -37,12 +49,9 @@ class BlogController extends Controller
      */
     public function showPost($slug)
     {
-       
-        $post = Post::with('tags')->select('posts.*','blog_category.name as category')
-                ->leftJoin('blog_category', 'blog_category.id', '=', 'posts.blog_category_id')
-                ->where('posts.slug', $slug)
-                ->first();
 
+        $post = $this->blogs->getBlogDetails($slug);
+       
         return view('blog.post', compact('post'));
     }
 }

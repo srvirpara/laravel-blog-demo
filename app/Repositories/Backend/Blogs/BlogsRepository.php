@@ -157,4 +157,41 @@ class BlogsRepository extends BaseRepository
         return $tags_array;
         
     }
+
+    /**
+     * get All Published Blogs
+     *
+     * @throws GeneralException
+     *
+     * @return Array
+     */
+    public function getAllBlogs()
+    {
+
+        $posts = Blog::where('published_at', '<=', Carbon::now())
+                ->orderBy('published_at', 'desc')
+                ->paginate(config('blog.posts_per_page'));
+
+        return $posts;
+        
+    }
+
+    /**
+     * get Blog details
+     *
+     * @throws GeneralException
+     *
+     * @return Array
+     */
+    public function getBlogDetails($slug)
+    {
+
+        $post = Blog::with('tags')->select('posts.*','blog_category.name as category')
+                ->leftJoin('blog_category', 'blog_category.id', '=', 'posts.blog_category_id')
+                ->where('posts.slug', $slug)
+                ->first();
+
+        return $post;
+        
+    }
 }
