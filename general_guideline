@@ -1,0 +1,29 @@
+Admin URLs :
+
+
+1) Admin Login URL - http://localhost:8000/admin/login
+
+2) Admin Registration URL : http://localhost:8000/admin/register
+
+Blog Management : 
+
+	3) Blog management : http://localhost:8000/admin/blog
+
+	4) Create blog 	   : http://localhost:8000/admin/create-blog
+
+Blog category management :
+
+	5) Blog category management : http://localhost:8000/admin/blog-category
+
+	6) Create blog category 	: http://localhost:8000/admin/create-blog-category
+
+Blog tags management :	
+
+	7) Blog tags management : http://localhost:8000/admin/blog-tag
+
+	8) Create Blog tags 	: http://localhost:8000/admin/create-blog-tag
+
+
+Frontend URLs :
+
+Blog listing : http://localhost:8000/blog

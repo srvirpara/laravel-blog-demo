@@ -114,6 +114,39 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        'backend' => [
+            
+            'blogcategories' => [
+                'title'     => 'Blog Category',
+                'is_active' => 'Active',
+            ],
+
+            'blogtags' => [
+                'title'     => 'Blog Tag',
+                'is_active' => 'Active',
+            ],
+
+            'blogs' => [
+                'title'            => 'Blog Title',
+                'category'         => 'Blog Category',
+                'publish'          => 'Publich Date & Time',
+                'image'            => 'Featured Image',
+                'content'          => 'Content',
+                'tags'             => 'Tags',
+                'meta-title'       => 'Meta Title',
+                'slug'             => 'Slug',
+                'cannonical_link'  => 'Cannonical Link',
+                'meta_keyword'     => 'Meta Keyword',
+                'meta_description' => 'Meta Description',
+                'status'           => 'Status',
+            ],
+            
+        ],
+
+       
+    ],
+
 
 ];
